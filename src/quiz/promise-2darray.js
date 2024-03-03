@@ -1,7 +1,7 @@
 function sum2DArray(arr) {
     return new Promise((resolve, reject) => {
-        console.log("Sum called ... ");
-        if (Array.isArray(arr)) {
+        console.log('Sum called ... ');
+        if(Array.isArray(arr)) {
             setTimeout(() => {
                 let sum = 0;
                 for (let i = 0; i < arr.length; i++) {
@@ -9,14 +9,15 @@ function sum2DArray(arr) {
                         sum += arr[i][j];
                     }
                 }
-                console.log("resolving ... ");
+                console.log('resolving ... ');
                 resolve(sum);
             }, 0);
-        } else {
-            console.log("rejecting ... ");
-            reject("BAD INPUT: Expected array as input");
         }
-        console.log("returning from sum");
+        else {
+            console.log('rejecting ... ');
+            reject('BAD INPUT: Expected array as input');
+        }
+        console.log('returning from sum');
     });
 }
 
@@ -24,23 +25,19 @@ function sum2DArray(arr) {
 const array2D = [
     [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9],
+    [7, 8, 9]
 ];
 
 const sumPromise1 = sum2DArray(array2D);
-sumPromise1
-    .then((result) => {
-        console.log("Sum of array2D:", result);
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
+sumPromise1.then(result => {
+    console.log("Sum Promise 1:", result);
+}).catch(error => {
+    console.error("Sum Promise 1 Error:", error);
+});
 
-const sumPromise2 = sum2DArray("array2D");
-sumPromise2
-    .then((result) => {
-        console.log("Sum of array2D:", result);
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
+const sumPromise2 = sum2DArray('array2D');
+sumPromise2.then(result => {
+    console.log("Sum Promise 2:", result);
+}).catch(error => {
+    console.error("Sum Promise 2 Error:", error);
+});

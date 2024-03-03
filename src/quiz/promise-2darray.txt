@@ -1,3 +1,10 @@
-The code sets up a function called `sum2DArray()` to asynchronously compute the sum of elements within a 2D array. When invoked with a valid 2D array, the function initiates the sum calculation, logs messages signaling the start of the process, then after a brief delay, it fulfills the promise with the calculated sum before returning from the function. Conversely, if the input is not an array, the function rejects the promise, issuing an error message specifying the expected input type.
+Explanation of the code execution sequence can be explained by observing the order of logged messages in src/quiz/promise-2darray.txt:
 
-Following this, two promises are instantiated with different inputs: one with a valid 2D array (array2D) and the other with a string ('array2D'). These promises are managed using `.then()` and `.catch()` methods to capture either the resolved value or the reason for rejection, respectively. The asynchronous nature of execution allows the script to proceed while awaiting the resolution or rejection of promises. Consequently, logging messages indicating promise creation, resolution, rejection, and handling are interleaved based on the asynchronous execution order and any synchronous code present in the script.
+1. The message "Sum called ..." denotes the initiation of the execution of the sum2DArray() function, which is recorded in the main thread.
+2. Upon encountering "returning from sum," it indicates that the function execution has reached the conclusion of the sum2DArray() function block.
+3. The appearance of "rejecting ..." signifies an occurrence when the input parameter passed to sum2DArray() is not an array. This precedes the execution of sumPromise1, as it is expedient to reject an invalid input promptly, as seen in the case of sumPromise2.
+4. Following the rejection handling block, the message "returning from sum" resurfaces once more.
+5. Another instance of "Sum called ..." is logged when sum2DArray() is invoked with 'array2D'.
+6. The logging of "resolving ..." ensues when the promise is successfully resolved with a valid input array.
+7. The message "Sum Promise 1: 45" denotes the affirmative resolution of the promise, yielding the correct sum value.
+8. Finally, "Sum Promise 2 Error: BAD INPUT: Expected array as input" is logged consequent to the rejection of the promise due to an invalid input. In this scenario, a string was provided instead of an array.
